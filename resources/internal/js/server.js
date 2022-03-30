@@ -14,28 +14,19 @@ const server = http.createServer((request, response) => {
             body += chunk.toString();
         });
 
-        // process data here
-        for (let char of body) {
-            body += "1";
-        }
-
         // when data is done being processed
         request.on("end", () => {
+            console.log("This is triggered!")
+            console.log(body);
             response.writeHead("200");
-            response.end(body);
+            response.end(body); // how to write body to response?
         });
-
-        // at the end
-        response.writeHead("200");
-        // return a formatted list of hexcodes
-        response.end(body);
-    }
-    else {
+    } else {
         response.writeHead("501");
         response.end();
     }
 })
 
 server.listen(port, host, () => {
-  console.log(`Server is running on http://${host}:${port}`)
-})
+  console.log(`Server is running on http://${host}:${port}`);
+});
