@@ -5,12 +5,9 @@
     "main": "resources/js/server.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "app": "node resources/js/server.js"
+      "app": "node resources/internal/js/server.js"
     },
     "contributors": ["Amy-Caroline Downing", "Anica Rimac", 
                      "Eline de Witte", "Eren Janberk Genç"],
-    "license": "MIT",
-    "dependencies": {
-      "bootstrap": "^5.0"
-    }
+    "license": "MIT"
   }
