@@ -26,7 +26,9 @@ const server = http.createServer((request, response) => {
             response.end(); // how to write body to response?
         });
     } else if (request.method === "GET") {
+        // there's a problem with URL pathname here :) 
         const url = new URL(request.url, `http://${request.headers.host}`);
+        console.log(url.pathname);
         if (url.pathname in pathNames) {
             console.log(`Retrieving ${url.pathname}`);
         } else {
