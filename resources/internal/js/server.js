@@ -7,19 +7,20 @@ const port = 8000;
 
 const server = http.createServer((request, response) => {
     if (request.method === "POST") {
-        let body = "";
+        let data = "";
 
-        // stream the body data 
+        // stream the POSTed data 
         request.on("data", chunk => {
-            body += chunk.toString();
+            data += chunk.toString();
         });
+
+        // process the POSTed data
 
         // when data is done being processed
         request.on("end", () => {
-            console.log("This is triggered!")
-            console.log(body);
+            console.log("I am triggered!");
             response.writeHead("200");
-            response.end(body); // how to write body to response?
+            response.end(); // how to write body to response?
         });
     } else {
         response.writeHead("501");
