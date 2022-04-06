@@ -6,7 +6,7 @@ const path = require("path");
 
 const host = "0.0.0.0";
 const port = (process.env.PORT || 8000);
-const pathNames = ["/index.html, /internal/html/info.html", "/internal/html.app.html"];
+const pathNames = ["/index.html", "/internal/html/info.html", "/internal/html.app.html"];
 
 const server = http.createServer((request, response) => {
     if (request.method === "POST") {
