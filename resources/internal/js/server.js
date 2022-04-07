@@ -4,7 +4,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require('path');
 
-const host = "localhost";
+const host = (process.env.HOST || "localhost");
 const port = (process.env.PORT || 8000);
 
 const server = http.createServer((request, response) => {
