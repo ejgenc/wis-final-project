@@ -17,15 +17,13 @@ async function postData (url="", data={}) {
         referrerPolicy: "no-referrer",
         body: JSON.stringify(data) // from JSON to string
     });
-    return response.json(); // from string to JSON
+    return await response.json();
 };
 
 const getPaletteButtonCallback = () => {
-    console.log("I was clicked!");
-    testPaletteData = postData("http://localhost:8000", {"url":"test"});
-    console.log(testPaletteData);
+    postData("http://127.0.0.1:8000", {"url":"test"})
+    .then(data => testPaletteData = data);
 };
-
 
 // cast logic
 document.getElementById("test").onclick = getPaletteButtonCallback;

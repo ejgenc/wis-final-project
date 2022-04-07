@@ -9,22 +9,19 @@ const port = (process.env.PORT || 8000);
 
 const server = http.createServer((request, response) => {
     if (request.method === "POST") {
-        let data = "";
+        let body = "";
 
-        // stream the POSTed data 
         request.on("data", chunk => {
-            data += chunk.toString();
-        });
-
-        // process the POSTed data
-
-        // when data is done being processed
-        request.on("end", () => {
-            console.log("I am triggered!");
-            console.log(data);
-            response.writeHead("200", {"Content-type": "text/plain"});
-            response.end(data, "utf-8");
-        });
+            body += chunk.toString();
+        }).on("end", () => {
+            body = JSON.parse(body);
+            response.writeHead(200, {"Content-Type": "application/json"});
+            response.end(JSON.stringify(body));
+        }).on("error", error => {
+            console.error(err.stack);
+            response.writeHead(404);
+            response.end();
+        })
     } else if (request.method === "GET") {
         const url = new URL(request.url, `http://${request.headers.host}`);
         let filePath = "." + url.pathname;
