@@ -2,11 +2,11 @@
     "name": "wis-final-project",
     "version": "1.0.0",
     "description": "Created for WIS final project",
-    "main": "resources/internal/js/server.js",
+    "main": "src/server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon",
-        "app": "node resources/internal/js/server.js"
+        "app": "node src/server.js"
     },
     "contributors": [
         "Amy-Caroline Downing",
@@ -15,11 +15,16 @@
         "Eren Janberk Genç"
     ],
     "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^5.1",
+        "p5": "^1.4"
+    },
     "devDependencies": {
-        "nodemon": "^2.0.15"
+        "nodemon": "^2.0.15",
+        "sass": "1.50"
     },
     "nodemonConfig": {
         "verbose": true,
-        "watch": ["resources/internal", "package.json", "package-lock.json", "index.html"]
+        "watch": ["src", "node_modules", "package.json", "package-lock.json"]
     }
 }
