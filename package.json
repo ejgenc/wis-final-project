@@ -2,12 +2,24 @@
     "name": "wis-final-project",
     "version": "1.0.0",
     "description": "Created for WIS final project",
-    "main": "resources/js/server.js",
+    "main": "resources/internal/js/server.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "app": "node resources/internal/js/server.js"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon",
+        "app": "node resources/internal/js/server.js"
     },
-    "contributors": ["Amy-Caroline Downing", "Anica Rimac", 
-                     "Eline de Witte", "Eren Janberk Genç"],
-    "license": "MIT"
-  }
+    "contributors": [
+        "Amy-Caroline Downing",
+        "Anica Rimac",
+        "Eline de Witte",
+        "Eren Janberk Genç"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "nodemonConfig": {
+        "verbose": true,
+        "watch": ["resources/internal"]
+    }
+}

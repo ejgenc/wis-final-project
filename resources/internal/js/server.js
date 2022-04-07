@@ -1,12 +1,11 @@
 "use strict";
 
 const http = require("http");
-const fileSystem = require("fs");
-const path = require("path");
+const fs = require("fs");
+const path = require('path');
 
-const host = "0.0.0.0";
+const host = "localhost";
 const port = (process.env.PORT || 8000);
-const pathNames = ["/index.html", "/internal/html/info.html", "/internal/html.app.html"];
 
 const server = http.createServer((request, response) => {
     if (request.method === "POST") {
@@ -26,20 +25,49 @@ const server = http.createServer((request, response) => {
             response.end(); // how to write body to response?
         });
     } else if (request.method === "GET") {
-        // there's a problem with URL pathname here :) 
         const url = new URL(request.url, `http://${request.headers.host}`);
-        console.log(url.pathname);
-        if (url.pathname in pathNames) {
-            console.log(`Retrieving ${url.pathname}`);
+        let filePath = "." + url.pathname;
+        if (filePath === "./") {
+            filePath = "./index.html";
+        }
+
+        const extName = path.extname(filePath)
+        let contentType;
+        if (extName === ".html") {
+            contentType = "text/html";
+        } else if (extName === ".js") {
+            contentType = "text/javascript";
+        } else if (extName === ".css") {
+            contentType = "text/css";
         } else {
+            // I am not serving any other content atm
             response.writeHead("404");
             response.end();
         }
+
+        fs.access(filePath, fs.F_OK, err => {
+            if (err) {
+                response.writeHead("404");
+                response.end();
+            }
+            else {
+                fs.readFile(filePath, (error, content) => {
+                    if (error) {
+                        response.writeHead(500);
+                        response.end();
+                    } else {
+                        response.writeHead(200, {"Content-Type": contentType});
+                        response.end(content, "utf-8")
+                    }
+                });
+            }
+        });
+
     } else {
         response.writeHead("501");
         response.end();
     }
-})
+});
 
 server.listen(port, host, () => {
   console.log(`Server is running on http://${host}:${port}`);
