@@ -20,6 +20,6 @@
     },
     "nodemonConfig": {
         "verbose": true,
-        "watch": ["resources/internal"]
+        "watch": ["resources/internal", "package.json", "package-lock.json", "index.html"]
     }
 }

@@ -21,8 +21,9 @@ const server = http.createServer((request, response) => {
         // when data is done being processed
         request.on("end", () => {
             console.log("I am triggered!");
-            response.writeHead("200");
-            response.end(); // how to write body to response?
+            console.log(data);
+            response.writeHead("200", {"Content-type": "text/plain"});
+            response.end(data, "utf-8");
         });
     } else if (request.method === "GET") {
         const url = new URL(request.url, `http://${request.headers.host}`);
@@ -32,22 +33,24 @@ const server = http.createServer((request, response) => {
         }
 
         const extName = path.extname(filePath)
-        let contentType;
-        if (extName === ".html") {
-            contentType = "text/html";
-        } else if (extName === ".js") {
-            contentType = "text/javascript";
-        } else if (extName === ".css") {
-            contentType = "text/css";
-        } else {
-            // I am not serving any other content atm
-            response.writeHead("404");
-            response.end();
-        }
+        const map = {
+            '.ico': 'image/x-icon',
+            '.html': 'text/html',
+            '.js': 'text/javascript',
+            '.json': 'application/json',
+            '.css': 'text/css',
+            '.png': 'image/png',
+            '.jpg': 'image/jpeg',
+            '.wav': 'audio/wav',
+            '.mp3': 'audio/mpeg',
+            '.svg': 'image/svg+xml',
+            '.pdf': 'application/pdf',
+            '.doc': 'application/msword'
+        };
 
         fs.access(filePath, fs.F_OK, err => {
             if (err) {
-                response.writeHead("404");
+                response.writeHead(404);
                 response.end();
             }
             else {
@@ -56,7 +59,10 @@ const server = http.createServer((request, response) => {
                         response.writeHead(500);
                         response.end();
                     } else {
-                        response.writeHead(200, {"Content-Type": contentType});
+                        response.writeHead(
+                            200,
+                            {"Content-Type": map[extName] || "text/plain"}
+                        );
                         response.end(content, "utf-8")
                     }
                 });
@@ -64,7 +70,7 @@ const server = http.createServer((request, response) => {
         });
 
     } else {
-        response.writeHead("501");
+        response.writeHead(501);
         response.end();
     }
 });
