@@ -9,14 +9,40 @@ const port = (process.env.PORT || 8000);
 
 const server = http.createServer((request, response) => {
     if (request.method === "POST") {
+        if (request.headers["content-type"] !== "application/json") {
+            response.writeHead(406);
+            response.end();
+        }
         let body = "";
 
         request.on("data", chunk => {
             body += chunk.toString();
         }).on("end", () => {
             body = JSON.parse(body);
-            response.writeHead(200, {"Content-Type": "application/json"});
-            response.end(JSON.stringify(body));
+            // validate POST body
+            let failValidityCheck = false;
+            if (Object.keys(body)[0] !== "nasaUrl") {
+                failValidityCheck = true;
+            }
+            try {
+                const nasaUrl = new URL(body["nasaUrl"]);
+                if (nasaUrl["host"] !== "apod.nasa.gov") {
+                    failValidityCheck = true;
+                }
+            } catch (err) {
+                failValidityCheck = true;
+            }
+            
+            // if it fails validation
+            if (failValidityCheck) {
+                response.writeHead(422);
+                response.end();
+            // if it passes validation
+            } else {
+                // call the function for extracting color palette data
+                response.writeHead(200, {"content-type": "application/json"});
+                response.end(JSON.stringify(body));
+            }
         }).on("error", error => {
             console.error(err.stack);
             response.writeHead(404);
@@ -28,7 +54,6 @@ const server = http.createServer((request, response) => {
         if (filePath === "./") {
             filePath = "./landing.html";
         }
-        console.log(filePath);
 
         const extName = path.extname(filePath)
         const map = {
@@ -73,6 +98,13 @@ const server = http.createServer((request, response) => {
     }
 });
 
+// function for extracting color palette data
+    // spawn a subprocess
+    // call the subprocess w/ parameters
+    // get the result of the subprocess
+    // return the result
+
+// run the server
 server.listen(port, host, () => {
   console.log(`Server is running on http://${host}:${port}`);
 });
