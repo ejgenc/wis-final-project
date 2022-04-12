@@ -4,7 +4,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require('path');
 
-const headers = {
+const corsHeaders = {
     "Access-Control-Allow-Origin": "https://wis-final-project.herokuapp.com",
     "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
     "Access-Control-Max-Age": 2592000, // 30 days
@@ -15,7 +15,7 @@ const port = (process.env.PORT || 8000);
 
 const server = http.createServer((request, response) => {
     if (request.method === "OPTIONS") {
-        response.writeHead(204, headers);
+        response.writeHead(204, corsHeaders);
         response.end();
     } else if (request.method === "POST") {
         if (request.headers["content-type"] !== "application/json") {

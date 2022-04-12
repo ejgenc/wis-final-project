@@ -21,7 +21,7 @@ async function postJson (url="", data={}) {
 };
 
 const getPaletteButtonCallback = () => {
-    postJson("http://127.0.0.1:8000", {
+    postJson("https://wis-final-project.herokuapp.com", {
         "nasaUrl":"https://apod.nasa.gov/apod/image/1310/velafilaments_jadescope_960.jpg"
     })
     .then(data => testPaletteData = data);
