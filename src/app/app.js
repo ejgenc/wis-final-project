@@ -3,11 +3,11 @@ console.log("app.js imported!");
 let testPaletteData;
 
 // I am using this section to test out some stuff, please do not erase :) 
-// define logic
-async function postData (url="", data={}) {
+// --- define logic ---
+async function postJson (url="", data={}) {
     const response = await fetch(url, {
         method: "POST",
-        mode: "no-cors",
+        mode: "cors",
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
@@ -21,9 +21,11 @@ async function postData (url="", data={}) {
 };
 
 const getPaletteButtonCallback = () => {
-    postData("http://127.0.0.1:8000", {"url":"test"})
+    postJson("http://127.0.0.1:8000", {
+        "nasaUrl":"https://apod.nasa.gov/apod/image/1310/velafilaments_jadescope_960.jpg"
+    })
     .then(data => testPaletteData = data);
 };
 
-// cast logic
+// --- cast logic ---
 document.getElementById("test").onclick = getPaletteButtonCallback;
