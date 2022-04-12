@@ -11,13 +11,50 @@
     <!-- CSS -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="src/landing/landing.css">
+    <!-- Style -->
+    <!-- not necessarily the font we need to use, but using as a placeholder for a cool style for our title -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+    <!-- On webstorm I couldn't get the animation to work from the CSS file
+         even though it should be correct based on every tutorial I watched
+         as a result I added it here, but maybe we can check that together on tues -->
+    <style>@keyframes move-twink-back {
+               from {background-position:0 0;}
+               to {background-position:-10000px 5000px;}
+           }
+
+    .stars, .twinkling {
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        height:100%;
+        display:block;
+    }
+
+    .stars {
+        background:#000 url(media/stars.png) repeat top center;
+        z-index:0;
+    }
+
+    .twinkling{
+        background:transparent url(media/twinkling.png) repeat top center;
+        z-index:1;
+        animation:move-twink-back 200s linear infinite;
+    }</style>
+    
     <!-- JS -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
     <script src="node_modules/p5/lib/p5.min.js" async defer></script>
     <script src="src/landing/landing.js" async defer></script>
   </head>
   <body>
-    <h1>The Starry Night</h1>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="title">
+      <h1>The Starry Night</h1>
+    <div/>
     <p> To the converter (temporary tittle)</p>
     <h2>Dummy Links</h2>
     <a href="src/info/info.html">Info Page</a>
