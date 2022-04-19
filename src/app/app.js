@@ -1,8 +1,36 @@
 console.log("app.js imported!");
 
-let testPaletteData;
+// global variables
+let paletteData;
+let nasaImageUrl;
+const nasaImage = document.getElementById("nasaImage");
 
-// I am using this section to test out some stuff, please do not erase :) 
+// nasa callback
+async function nasaCallback (
+    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1") {
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+    });
+    nasaImageUrl =  await response.json();
+    if (nasaImageUrl[0].media_type == "video") {
+        nasaImageUrl = nasaCallback();
+    }
+    nasaImageUrl = nasaImageUrl[0].url;
+    nasaImage.src = nasaImageUrl;
+}
+
+
+// Backend button logic
+
+// backend callback
 // --- define logic ---
 async function postJson (url="", data={}) {
     const response = await fetch(url, {
@@ -22,9 +50,9 @@ async function postJson (url="", data={}) {
 
 const getPaletteButtonCallback = () => {
     postJson("https://wis-final-project.herokuapp.com", {
-        "nasaUrl":"https://apod.nasa.gov/apod/image/1310/velafilaments_jadescope_960.jpg"
+        "nasaImageUrl": nasaImageUrl
     })
-    .then(data => testPaletteData = data);
+    .then(data => paletteData = data);
 };
 
 // --- cast logic ---
