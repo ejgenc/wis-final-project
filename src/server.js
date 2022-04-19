@@ -30,11 +30,11 @@ const server = http.createServer((request, response) => {
             body = JSON.parse(body);
             // validate POST body
             let failValidityCheck = false;
-            if (Object.keys(body)[0] !== "nasaUrl") {
+            if (Object.keys(body)[0] !== "nasaImageUrl") {
                 failValidityCheck = true;
             }
             try {
-                const nasaUrl = new URL(body["nasaUrl"]);
+                const nasaUrl = new URL(body["nasaImageUrl"]);
                 if (nasaUrl["host"] !== "apod.nasa.gov") {
                     failValidityCheck = true;
                 }
