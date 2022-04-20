@@ -3,7 +3,7 @@ import json
 from urllib.request import urlopen
 
 # import numpy as np
-# from skimage import color, util
+# from skimage impgitort color, util
 # from sklearn import cluster
 
 body = sys.stdin()
