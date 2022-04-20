@@ -6,7 +6,7 @@ const path = require('path');
 const { spawn, ChildProcess } = require('child_process');
 
 const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://wis-final-project.herokuapp.com",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
     "Access-Control-Max-Age": 2592000, // 30 days
     /** add other headers as per requirement */
@@ -50,7 +50,7 @@ const server = http.createServer((request, response) => {
             // if it passes validation
             } else {
                 // call the function for extracting color palette data
-                getColorPalette(body["nasaUrl"]).then(
+                getColorPalette(body["nasaImageUrl"]).then(
                     data => {
                         response.writeHead(200, {"content-type": "application/json"});
                         response.end(JSON.stringify(data));
@@ -118,7 +118,6 @@ const server = http.createServer((request, response) => {
 
 const getColorPalette = async imgUrl => {
     const python = spawn("python", ["src/app/app.py"]);
-    python.stdin.write(imgUrl);
     let colorPalette = "";
     for await (const chunk of python.stdout) {
         colorPalette += chunk;

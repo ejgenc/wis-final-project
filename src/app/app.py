@@ -6,7 +6,7 @@ from urllib.request import urlopen
 # from skimage import color, util
 # from sklearn import cluster
 
-# body = json.load(sys.stdin())
-# print(body)
-
-print("I am the color palette extraction app!")
+body = sys.stdin()
+# sys.stdout.write(body)
+# sys.stdout.flush()
+print("Hey there!")

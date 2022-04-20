@@ -48,15 +48,8 @@ async function postJson (url="", data={}) {
     return await response.json();
 };
 
-// const getPaletteButtonCallback = () => {
-//     postJson("https://wis-final-project.herokuapp.com", {
-//         "nasaUrl":"https://apod.nasa.gov/apod/image/1310/velafilaments_jadescope_960.jpg"
-//     })
-//     .then(data => testPaletteData = data);
-// };
-
 const getPaletteButtonCallback = () => {
-    postJson("https://wis-final-project.herokuapp.com", {
+    postJson("http://127.0.0.1:8000/", {
         "nasaImageUrl": nasaImageUrl
     })
     .then(data => paletteData = data);
