@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require('path');
 
 const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://wis-final-project.herokuapp.com",
+    "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
     "Access-Control-Max-Age": 2592000, // 30 days
     /** add other headers as per requirement */
