@@ -49,7 +49,7 @@ async function postJson (url="", data={}) {
 };
 
 const getPaletteButtonCallback = () => {
-    postJson("http://127.0.0.1:8000", {
+    postJson("http://127.0.0.1:8000/", {
         "nasaImageUrl": nasaImageUrl
     })
     .then(data => paletteData = data);

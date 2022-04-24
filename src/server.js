@@ -3,6 +3,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require('path');
+const { spawn, ChildProcess } = require('child_process');
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -49,8 +50,16 @@ const server = http.createServer((request, response) => {
             // if it passes validation
             } else {
                 // call the function for extracting color palette data
-                response.writeHead(200, {"content-type": "application/json"});
-                response.end(JSON.stringify(body));
+                getColorPalette(body["nasaImageUrl"]).then(
+                    data => {
+                        response.writeHead(200, {"content-type": "application/json"});
+                        response.end(JSON.stringify(data));
+                    },
+                    err => {
+                        response.writeHead(500);
+                        response.end();
+                    }
+                );
             }
         }).on("error", error => {
             console.error(err.stack);
@@ -107,11 +116,28 @@ const server = http.createServer((request, response) => {
     }
 });
 
-// function for extracting color palette data
-    // spawn a subprocess
-    // call the subprocess w/ parameters
-    // get the result of the subprocess
-    // return the result
+const getColorPalette = async imgUrl => {
+    const python = spawn("python", ["src/app/app.py"]);
+    let colorPalette = "";
+    for await (const chunk of python.stdout) {
+        colorPalette += chunk;
+    }
+    let err = "";
+    for await (const chunk of python.stderr) {
+        err += chunk
+        console.error(chunk);
+    }
+    const exitCode = await new Promise((resolve, reject) => {
+        python.on("exit", resolve);
+    });
+    if (exitCode) {
+        throw new Error(
+            `Subprocess ran into an error. Exited with code ${exitCode}
+            and ran into the following error: ${err}`
+        );
+    }
+    return colorPalette;
+};
 
 // run the server
 server.listen(port, host, () => {
