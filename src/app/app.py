@@ -6,7 +6,7 @@ from urllib.request import urlopen
 # from skimage impgitort color, util
 # from sklearn import cluster
 
-body = sys.stdin()
+# body = sys.stdin()
 # sys.stdout.write(body)
 # sys.stdout.flush()
 print("Hey there!")
