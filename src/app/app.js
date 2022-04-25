@@ -27,6 +27,29 @@ async function nasaCallback (
     nasaImage.src = nasaImageUrl;
 }
 
+// nasa after date picked
+async function nasaDATE (
+    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&date=xxxx/xx/xx") {
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+    });
+    nasaImageUrl =  await response.json();
+    if (nasaImageUrl[0].media_type == "video") {
+        nasaImageUrl = nasaCallback();
+    }
+    nasaImageUrl = nasaImageUrl[0].url;
+    nasaImage.src = nasaImageUrl;
+}
+
+
 
 // Backend button logic
 
