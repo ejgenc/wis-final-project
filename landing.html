@@ -1,34 +1,71 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required metadata -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Landing Page</title>
+<head>
+  <!-- Required metadata -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing Page</title>
 
-    <!-- Resources -->
-    <!-- CSS and Fonts -->
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/landing/landing.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&display=swap">
-    <!-- JS -->
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
-    <script src="src/landing/landing.js" async defer></script>
-  </head>
-  <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    <div class="title">
-        <h1>The Starry Night</h1>
+  <!-- Resources -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/src/landing/landing.css">
+  <!-- Style -->
+  <!-- not necessarily the font we need to use, but using as a placeholder for a cool style for our title -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- JS -->
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
+  <script src="node_modules/p5/lib/p5.min.js" async defer></script>
+  <script src="src/landing/landing.js" async defer></script>
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+  <div class="container">
+    <a class="navbar-brand" href="#"></a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="mx-auto"></div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-grey text-underline-hover" href="landing.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-grey text-underline-hover" href="src/app/app.html">App</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-grey text-underline-hover" href="src/info/info.html">About Us</a>
+        </li>
+      </ul>
     </div>
-    <div class="temporarytitle">
-        <p> To the converter (temporary title)</p>
-    </div>
-    <div class="dummylinks">
-        <h2>Dummy Links</h2>
-        <a href="src/info/info.html">Info Page</a>
-        <a href="src/app/app.html">App Page</a>
-    </div>
-  </body>
+  </div>
+</nav>
+<div class="stars"></div>
+<div class="twinkling"></div>
+<div class="title">
+  <h1>The Starry Night</h1>
+</div>
+<div class="wrapper">
+  <a href="/src/app/app.html" class="text-decoration-none">
+    <button class="button text-decoration-none">Look at the Stars!</button>
+  </a>
+</div>
+<div class="canvas-area">
+  <div id="canvas"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 </html>
