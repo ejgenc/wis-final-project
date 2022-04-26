@@ -8,34 +8,84 @@
     <title>App Interface</title>
 
     <!-- Resources -->
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- CSS AND BOOTSTRAP -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel = "stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link href="styleapp.css" rel="stylesheet" type="text/css">
     <!-- JS -->
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
     <script src="app.js" async defer></script> <!-- Application frontend logic -->
   </head>
+
+
   <body>
-    <img> <!--NASA picture of the day -->
-    <p>title of the image</p>
-    <p>Randomize</p> <!-- -> needs a box in CSS? and an action button -> <button type="button" onclick="sayHello()">Try it</button> -->
-    <p>Download</p>
-    <p>Pick a date</p> <!-- correct? should be decided in bootstrap maybe? -->
-    <p>bootstrap input element needed</p>
-    <img><!-- the four dominant colors -->
-    <a>link for dominant color</a>
-    <a>link for dominant color</a>
-    <a>link for dominant color</a>
-    <a>link for dominant color</a>
-    <img><!-- europeana image -->
-    <p>title of the image</p>
-    <p>Randomize</p> <!-- -> needs a box in CSS? and an action button -> <button type="button" onclick="sayHello()">Try it</button> -->
-    <p>Download</p>
-    <date field</date> <!-- correct? should be decided in bootstrap maybe? -->
-    <h2>Dummy Links</h2>
-    <img src="" id="nasaImage">
+
+  <!-- row 1 with images and colors -->
+  <div class="row" style="margin-bottom:25px">
+      <div class="col-sm-5">
+        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" alt="nasaimage" width="250">
+      </div>
+      <div class="col-sm-2">
+        <button id="color button" class="btn btn-dark" type="button"
+                id="colorButton"
+                onclick="searchpicturewiththiscolor"></button>
+        <button id="color button" class="btn btn-dark" type="button"
+                id="colorButton"
+                onclick="searchpicturewiththiscolor"></button>
+        <button id="color button" class="btn btn-dark" type="button"
+                id="colorButton"
+                onclick="searchpicturewiththiscolor"></button>
+        <button id="color button" class="btn btn-dark" type="button"
+                id="colorButton"
+                onclick="searchpicturewiththiscolor"></button>
+      </div>
+      <div class = "col-sm-5">
+        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" alt="nasaimage" width="250">
+      </div>
+  </div>
+
+  <!-- row 2 with randomize buttons -->
+  <div class="row" style="margin-bottom:10px">
+    <div class="col-sm-2">
+      <button id="rondomize button" class="btn btn-dark" type="button"
+            id="searchButton"
+            onclick="Rondomize">Rondomize</button>
+    </div>
+    <div class="col-sm-3">
+      <input type = "date" name = "date">
+  </div>
+    <div class="col-sm-2"></div>
+    <div class = "col-sm-5">
+      <button id="rondomize button" class="btn btn-dark" type="button"
+              id="searchButton"
+              onclick="Rondomize">Rondomize</button>
+    </div>
+  </div>
+
+  <!-- row 3 with download-->
+  <div class="row">
+    <div class="col-sm-5" style="margin-bottom:10px">
+      <button id="download button" class="btn btn-dark" type="button"
+             id="downloadButton"
+             onclick="Downloadpicture">Download</button>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class = "col-sm-5">
+      <button id="download button" class="btn btn-dark" type="button"
+              id="downloadButton"
+              onclick="Downloadpicture">Download</button>
+    </div>
+  </div>
+
+
+  <h2>Dummy Links</h2>
     <a href="../../landing.html">Landing Page</a>
     <a href="../info/info.html">App Page</a>
+   <img scr=" " id="nasapicture">
     <button type="button" class="btn btn-primary" onclick="nasaCallback()">Talk with NASA</button>
     <button type="button" class="btn btn-primary" id="test">Talk with the backend</button>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>

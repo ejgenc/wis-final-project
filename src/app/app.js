@@ -57,3 +57,6 @@ const getPaletteButtonCallback = () => {
 
 // --- cast logic ---
 document.getElementById("test").onclick = getPaletteButtonCallback;
+
+
+
