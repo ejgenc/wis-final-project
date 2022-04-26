@@ -27,17 +27,13 @@
         <img src="" id="nasaImage" width="500">
       </div>
       <div class="col-sm-2">
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
+        <button id="buttoncolor1" class="btn btn-primary" type="button"
                 onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
+        <button id="colorbutton2" class="btn btn-secondary" type="button"
                 onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
+        <button id="colorbutton3" class="btn btn-succes" type="button"
                 onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
+        <button id="colorbutton4" class="btn btn-danger" type="button"
                 onclick="searchpicturewiththiscolor"></button>
       </div>
       <div class = "col-sm-5">
@@ -53,12 +49,13 @@
             onclick=nasaCallback()>Randomize</button>
     </div>
     <div class="col-sm-3">
-      <input type ="date" id name="date">
+      <input id="newdate" type ="date" name="date1">
       <button id="newNasa" class="btn btn-dark" type="button"
               id="NewNasa"
-              onclick=nasaDATE()>Search</button>
+              onclick= nasaDATE()>Search</button>
     </div>
     <div class="col-sm-2">
+
     </div>
     <div class = "col-sm-5">
       <button id="rondomize button" class="btn btn-dark" type="button"
@@ -90,7 +87,6 @@
   <h2>Dummy Links</h2>
     <a href="../../landing.html">Landing Page</a>
     <a href="../info/info.html">App Page</a>
-    <button type="button" class="btn btn-primary" onclick="nasaCallback()">Talk with NASA</button>
     <button type="button" class="btn btn-primary" id="test">Talk with the backend</button>
   <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
