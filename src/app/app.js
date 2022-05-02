@@ -8,6 +8,24 @@ let paletteData;
 let nasaImageUrl;
 const nasaImage = document.getElementById("nasaImage");
 
+
+// code to restrict datepicker to right dates
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+if(dd<10){
+    dd='0'+dd
+}
+if(mm<10){
+    mm='0'+mm
+}
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("newdate").setAttribute("max", today);
+
+
+
 // nasa callback
 async function nasaCallback (
     url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1")
@@ -33,15 +51,13 @@ async function nasaCallback (
 
 
 
-// nasa after date picked
+// nasa after date picking
 async function nasaDATE (
-    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1") {
-    console.log(searchInput);
-    console.log("yes");
-    let searcheddate = searchInput.value;
-    const realurl = url + String(searcheddate)
-    realurl = url+ str
-    const response = await fetch(realurl, {
+    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1")
+{
+    let datum = searchInput;
+    let realurl = "https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&date=" + datum;
+    const response = await fetch(url, {
         method: "GET",
         mode: "cors",
         cache: "no-cache",
@@ -88,14 +104,6 @@ const getPaletteButtonCallback = () => {
     })
     .then(data => paletteData = data);
 };
-
-
-
-
-async function seperatecolors (data) {
-
-
-}
 
 
 // --- cast logic ---
