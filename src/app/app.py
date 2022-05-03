@@ -1,4 +1,5 @@
 import sys
+import ast
 import json
 from urllib.request import urlopen
 
@@ -7,6 +8,8 @@ from urllib.request import urlopen
 # from sklearn import cluster
 
 # body = sys.stdin()
+# print(body)
 # sys.stdout.write(body)
 # sys.stdout.flush()
-print("Hey there!")
+# print("Hey there!")
+print(type(sys.argv))
