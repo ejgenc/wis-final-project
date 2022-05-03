@@ -1,10 +1,12 @@
-console.log("app.js imported!");
-const searchInput = document.getElementById("newdate");
-console.log(searchInput);
-
+"use strict";
 // global variables
 let paletteData;
 let nasaImageUrl;
+let europeanaImageUrl;
+const nasaImage = document.getElementById("nasaImage");
+const europeanaImage = document.getElementById("europeanaImage")
+const searchInput = document.getElementById("newdate");
+
 
 // code to restrict datepicker to right dates
 var today = new Date();
@@ -19,7 +21,7 @@ if(mm<10){
 }
 
 today = yyyy+'-'+mm+'-'+dd;
-document.getElementById("newdate").setAttribute("max", today);
+// document.getElementById("newdate").setAttribute("max", today);
 
 
 
@@ -46,7 +48,23 @@ async function nasaCallback (
     nasaImage.src = nasaImageUrl;
 }
 
-
+async function europeanaCallback (
+    url="https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=*&rows=1000&start=1&wskey=orystoplin&colourpalette=%23FFE4C4") {
+    const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+    });
+    europeanaImageUrl = (await response.json())
+    europeanaImageUrl = europeanaImageUrl["items"][5]["edmIsShownBy"];
+    europeanaImage.src = europeanaImageUrl;
+};
 
 // nasa after date picking
 async function nasaDATE (
@@ -103,6 +121,7 @@ const getPaletteButtonCallback = () => {
 };
 
 
+
 // --- cast logic ---
 document.getElementById("test").onclick = getPaletteButtonCallback;
 
@@ -112,6 +131,7 @@ boxOne.style.background = '#ee82ee'
 
 let boxTwo = document.getElementById("square2");
 boxTwo.style.background = '#000000'
+
 
 let box3 = document.getElementById("square3");
 box3.style.background = '#989898'
