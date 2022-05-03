@@ -126,8 +126,10 @@ const getPaletteButtonCallback = () => {
 document.getElementById("test").onclick = getPaletteButtonCallback;
 
 //---colors---
+color1= '#ee82ee'
+
 let boxOne = document.getElementById("square1");
-boxOne.style.background = '#ee82ee'
+boxOne.style.background = color1
 
 let boxTwo = document.getElementById("square2");
 boxTwo.style.background = '#000000'
@@ -138,3 +140,10 @@ box3.style.background = '#989898'
 
 let boxFour = document.getElementById("square4");
 boxFour.style.background = '#838996'
+
+let boxFive = document.getElementById("square5");
+boxFive.style.background = '#838996'
+
+let boxSix = document.getElementById("square6");
+boxSix.style.background = '#838996'
+

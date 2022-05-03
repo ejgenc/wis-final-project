@@ -12,78 +12,68 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
     <!-- JS -->
-    <script src="app.js" async defer></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
     <script src="app.js" async defer></script>
   </head>
 
 
   <body>
-    <button type="button" class="btn btn-primary" id="getPaletteButton" onclick=getPaletteButtonCallback()>Talk with the backend</button>
-
-  <!-- row 1 with images and colors -->
-  <div class="row" style="margin-bottom:35px">
-      <div class="col-sm-5">
-        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" id="nasaImage" width="500">
+  <div class="card-group">
+    <div class="col-sm-5">
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="" id="nasaImage" width="500" height="500">
+        <button id="randombutton" class="btn btn-dark" type="button"
+                onclick=nasaCallback()>Randomize</button>
+        <div class="input-group mb-3">
+          <input id="newdate" type="date" class="form-control" min='1995-06-16' max='2022-05-02'>
+          <button id="newNasa" class="btn btn-dark" type="button"
+                  onclick= nasaDATE()>Search</button>
+        </div>
+        <a href="" download="nasaImage">
+          <button id="download button" class="btn btn-dark" type="button" >Download</button>
+        </a>
       </div>
-      <div class="col-sm-2" id="squares">
-        <div id="square1"></div>
-        <div id="square2"></div>
-        <div id="square3"></div>
-        <div id="square4"></div>
-        <a href="" id="">
+    </div>
+    </div>
+    <div class="col-sm-2">
+    <div class="card">
+      <div class="card-body">
+        <div id="squares">
+          <div id="square1"></div>
+          <div id="square2"></div>
+          <div id="square3"></div>
+          <div id="square4"></div>
+          <div id="square5"></div>
+          <div id="square6"></div>
+        </div>
         <button id="getcolors" class="btn btn-dark" type="button">get colors</button>
         </a>
         <button id="usecolors" class="btn btn-dark" type="button"
                 onclick=Europeanacallback()>Use colors</button>
       </div>
-      <div class = "col-sm-5">
-        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" id = "europeanaimg" alt="europeanaimage" width="500">
+    </div>
       </div>
-  </div>
-
-
-  <!-- row 2 with randomize buttons -->
-  <div class="row" style="margin-bottom:10px">
-    <div class="col-sm-2" >
-      <button id="randombutton" class="btn btn-dark" type="button"
-            onclick=nasaCallback()>Randomize</button>
-    </div>
-    <div class="input-group mb-3">
-      <input id="newdate" type="date" class="form-control" min='1995-06-16' max='2022-05-02'>
-      <button id="newNasa" class="btn btn-dark" type="button"
-              onclick= nasaDATE()>Search</button>
-    </div>
-    <div class="col-sm-2">
-    </div>
-    <div class = "col-sm-5">
-      <button id="rondomize button" class="btn btn-dark" type="button"
-              onclick="Randomize">Randomize</button>
-    </div>
-  </div>
-
-  <!-- row 3 with download-->
-  <div class="row" style="margin-bottom:10px">
     <div class="col-sm-5">
-
-      <a href="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" download="nasaimage" id="europeanaImage">
-      <button id="download button" class="btn btn-dark" type="button"
-             id="downloadButton"
-             onclick= "xxx">Download</button>
-      </a>
+    <div class="card">
+      <div class="card-body">
+        <img class="card-img-top" src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" id = "europeanaimg" width="500" height="500">
+        <button id="rondomize button" class="btn btn-dark" type="button"
+                onclick="Randomize">Randomize</button>
+        <a href="" download="europeanaimg">
+          <button id="download button" class="btn btn-dark" type="button">Download</button>
+        </a>
+      </div>
     </div>
-    <div class="col-sm-2"></div>
-    <div class = "col-sm-5">
-      <a href="" download="europeanaimg">
-      <button id="download button" class="btn btn-dark" type="button">Download</button>
-      </a>
     </div>
   </div>
+
 
 
 
   <h2>Dummy Links</h2>
     <a href="../../landing.html">Landing Page</a>
     <a href="../info/info.html">App Page</a>
+    <button type="button" class="btn btn-primary" id="test">Talk with the backend</button>
   </body>
 </html>
