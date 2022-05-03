@@ -136,7 +136,7 @@ const getColorPalette = async imgUrl => {
             and ran into the following error: ${err}`
         );
     }
-    return colorPalette[colorPalette.length()-4:];
+    return colorPalette;
 };
 
 // run the server
