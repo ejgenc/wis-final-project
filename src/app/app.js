@@ -1,5 +1,4 @@
 "use strict";
-
 // global variables
 let paletteData;
 let nasaImageUrl;
@@ -123,4 +122,19 @@ const getPaletteButtonCallback = () => {
 
 
 
+// --- cast logic ---
+document.getElementById("test").onclick = getPaletteButtonCallback;
 
+//---colors---
+let boxOne = document.getElementById("square1");
+boxOne.style.background = '#ee82ee'
+
+let boxTwo = document.getElementById("square2");
+boxTwo.style.background = '#000000'
+
+
+let box3 = document.getElementById("square3");
+box3.style.background = '#989898'
+
+let boxFour = document.getElementById("square4");
+boxFour.style.background = '#838996'

@@ -14,6 +14,7 @@
     <!-- JS -->
     <script src="app.js" async defer></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
+    <script src="app.js" async defer></script>
   </head>
 
 
@@ -25,15 +26,16 @@
       <div class="col-sm-5">
         <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" id="nasaImage" width="500">
       </div>
-      <div class="col-sm-2">
-        <button id="buttoncolor1" class="btn btn-primary" type="button"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="colorbutton2" class="btn btn-secondary" type="button"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="colorbutton3" class="btn btn-succes" type="button"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="colorbutton4" class="btn btn-danger" type="button"
-                onclick="searchpicturewiththiscolor"></button>
+      <div class="col-sm-2" id="squares">
+        <div id="square1"></div>
+        <div id="square2"></div>
+        <div id="square3"></div>
+        <div id="square4"></div>
+        <a href="" id="">
+        <button id="getcolors" class="btn btn-dark" type="button">get colors</button>
+        </a>
+        <button id="usecolors" class="btn btn-dark" type="button"
+                onclick=Europeanacallback()>Use colors</button>
       </div>
       <div class = "col-sm-5">
         <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" id = "europeanaimg" alt="europeanaimage" width="500">
@@ -63,17 +65,18 @@
   <!-- row 3 with download-->
   <div class="row" style="margin-bottom:10px">
     <div class="col-sm-5">
+
       <a href="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" download="nasaimage" id="europeanaImage">
       <button id="download button" class="btn btn-dark" type="button"
              id="downloadButton"
              onclick= "xxx">Download</button>
-        </a>
+      </a>
     </div>
     <div class="col-sm-2"></div>
     <div class = "col-sm-5">
-      <button id="download button" class="btn btn-dark" type="button"
-              id="downloadButton"
-              onclick="Downloadpicture">Download</button>
+      <a href="" download="europeanaimg">
+      <button id="download button" class="btn btn-dark" type="button">Download</button>
+      </a>
     </div>
   </div>
 

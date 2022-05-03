@@ -1,0 +1,37 @@
+/* p5.js customization. please do not touch :) */
+#canvas {
+    /* Display */
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.background-image {
+    background: #000000 url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true) repeat top center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+.h1 {
+    padding-top: 100px;
+    font-size: 60px;
+}
+
+.text-underline-hover {
+    text-decoration: none;
+}
+
+.text-underline-hover:hover {
+    text-decoration: underline;
+    text-underline-offset: 1em;
+}
+
+.container-fluid{
+    z-index: 3;
+}
+
