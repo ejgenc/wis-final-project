@@ -52,7 +52,8 @@
     margin-right:auto;
     text-align: center;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 10px;
+    border-width: 3px;
     text-decoration: none;
 
     color:#ffffff;
