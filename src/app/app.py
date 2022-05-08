@@ -1,4 +1,5 @@
 import sys
+import json
 from urllib.request import urlopen
 
 import numpy as np
@@ -10,6 +11,7 @@ def rgb_to_hex(red, green, blue):
     return '#%02x%02x%02x' % (red, green, blue)
 
 nasa_url = str(sys.argv[1])
+palette_data = {}
 
 # try getting the image
 try:
@@ -27,7 +29,9 @@ try:
     palette = color.lab2rgb(palette)
     palette = util.img_as_ubyte(palette)
     palette = [rgb_to_hex(*list(swatch)) for swatch in palette]
-    print(palette)
+    palette_data["raw_palette"] = palette
+    palette_data["europeana_palette"] = palette
+    print(palette_data)
     sys.exit(0)
 except Exception:
     sys.exit(1)

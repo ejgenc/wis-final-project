@@ -74,6 +74,10 @@ async function searchButtonCallback () {
 
 let paletteData;
 const getPaletteButtonCallback = async () => {
+    getPalette();
+};
+
+const getPalette = async () => {
     const nasaImageUrl = document.getElementById("nasaImage").src;
     const response = await fetch ("http://127.0.0.1:8000/", {
         method: "POST",
@@ -87,7 +91,7 @@ const getPaletteButtonCallback = async () => {
         referrerPolicy: "no-referrer",
         body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
-    paletteData = await response.json();
+    paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
 };
 
 

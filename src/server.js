@@ -136,6 +136,7 @@ const getColorPalette = async imgUrl => {
             and ran into the following error: ${err}`
         );
     }
+    colorPalette = colorPalette.slice(0, -2);
     return colorPalette;
 };
 
