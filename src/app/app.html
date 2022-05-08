@@ -16,9 +16,47 @@
     <script src="app.js" async defer></script>
   </head>
 
-
   <body>
-  <div class="card-group">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <div class="card">
+                    <img src="../../media/cat.jpg" id="nasaImage" class="card-img-top" width="100%" height="100%">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-dark" onclick=randomButtonCallback()>
+                            Randomize
+                        </button>
+                        <div class="input-group mb-3">
+                            <input id="datePicker" type="date" class="form-control" min='1995-06-16'>
+                            <button type="button" class="btn btn-dark" onclick= searchButtonCallback()>
+                                Search
+                            </button>
+                            <button id="download button" class="btn btn-dark" type="button">
+                                Download
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick=getPaletteButtonCallback()>
+                            Extract color palette
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="card">
+                    <img src="../../media/cat.jpg" id="nasaImage" class="card-img-top" width="100%" height="100%">
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <!-- <div class="card-group">
     <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
@@ -66,14 +104,10 @@
       </div>
     </div>
     </div>
-  </div>
+  </div> -->
 
 
 
 
-  <h2>Dummy Links</h2>
-    <a href="../../landing.html">Landing Page</a>
-    <a href="../info/info.html">App Page</a>
-    <button type="button" class="btn btn-primary" id="test">Talk with the backend</button>
   </body>
 </html>

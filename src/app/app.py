@@ -1,7 +1,4 @@
-from concurrent.futures import process
 import sys
-import ast
-import json
 from urllib.request import urlopen
 
 import numpy as np
@@ -12,9 +9,7 @@ def rgb_to_hex(red, green, blue):
     """Return color as #rrggbb for the given color values."""
     return '#%02x%02x%02x' % (red, green, blue)
 
-# nasa_url = str(sys.argv[1])
-nasa_url = "https://apod.nasa.gov/apod/image/2108/j20210815a_cgo_crop1200.jpg"
-
+nasa_url = str(sys.argv[1])
 
 # try getting the image
 try:
@@ -33,5 +28,6 @@ try:
     palette = util.img_as_ubyte(palette)
     palette = [rgb_to_hex(*list(swatch)) for swatch in palette]
     print(palette)
+    sys.exit(0)
 except Exception:
     sys.exit(1)
