@@ -18,20 +18,32 @@
     width: 100%;
 }
 .h1 {
-    padding-top: 100px;
-    font-size: 60px;
-}
+     font-family: 'Clicker Script', cursive;
+     font-size: 100px;
+     color: lightgray;
+ }
 
-.text-underline-hover {
-    text-decoration: none;
-}
+ .text-underline-hover {
+     text-decoration: none;
+ }
 
-.text-underline-hover:hover {
-    text-decoration: underline;
-    text-underline-offset: 1em;
-}
+ .text-underline-hover:hover {
+     text-decoration: underline;
+     text-underline-offset: 1em;
+ }
 
-.container-fluid{
-    z-index: 3;
+ .container-fluid{
+     z-index: 3;
+     padding-bottom: 25px;
+     /* change text color if needed --- color: deeppink; */
 }
-
+.card {
+    background-color: lightgray;
+}
+.p {
+    color: lightgray;
+    Font-Size: 15px;
+}
+body {
+    font-family: 'EB Garamond', serif;
+}
