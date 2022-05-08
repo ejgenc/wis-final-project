@@ -1,7 +1,4 @@
 "use strict";
-let europeanaImageUrl;
-const europeanaImage = document.getElementById("europeanaImage");
-
 
 // --- NASA image card ---  //
 // handling date picker logic
@@ -106,24 +103,23 @@ const updatePaletteSquares = async () => {
 };
 
 // --- Europeana image card --- //
-async function europeanaCallback (
-    url="https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=*&rows=1000&start=1&wskey=orystoplin&colourpalette=%23FFE4C4") {
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-    });
-    europeanaImageUrl = (await response.json())
-    europeanaImageUrl = europeanaImageUrl["items"][5]["edmIsShownBy"];
+async function getEuropeanaImage () {
+    let searchUrl = "https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=painting&rows=1000&start=1&wskey=orystoplin&colourpalette="
+    for (let color of paletteData["europeana_palette"]) {
+        searchUrl += "%23" + color.substring(1, color.length);
+    }
+
+    const response = await fetch(searchUrl, getParameters);
+    let europeanaImageUrl = await response.json()
+    europeanaImageUrl = europeanaImageUrl["items"][Math.round(Math.random(0, 100)*100)]["edmIsShownBy"];
+
+    const europeanaImage = document.getElementById("europeanaImage");
     europeanaImage.src = europeanaImageUrl;
 };
 
+async function europeanaButtonCallback () {
+    getEuropeanaImage();
+};
 
 // --- what happens onload? --- //
 
