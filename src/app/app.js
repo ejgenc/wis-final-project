@@ -22,7 +22,7 @@ const europeanaImage = document.getElementById("europeanaImage");
     document.getElementById("datePicker").setAttribute("value", today); // set today
 })();
 
-// GET parameters
+// get nasa image
 const getParameters = {
     method: "GET",
     mode: "cors",
@@ -72,9 +72,11 @@ async function searchButtonCallback () {
     getNasaImage(searchDate);
 };
 
+// get palette data 
 let paletteData;
 const getPaletteButtonCallback = async () => {
-    getPalette();
+    await getPalette();
+    await updatePaletteSquares();
 };
 
 const getPalette = async () => {
@@ -94,6 +96,14 @@ const getPalette = async () => {
     paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
 };
 
+
+// --- Palette row --- //
+const updatePaletteSquares = async () => {
+    const paletteSquares = document.getElementsByClassName("paletteSquare");
+    for (let i = 0; i < paletteData["raw_palette"].length; i++) {
+        paletteSquares[i].style.backgroundColor = paletteData["raw_palette"][i];
+    }
+};
 
 // --- Europeana image card --- //
 async function europeanaCallback (
@@ -115,26 +125,5 @@ async function europeanaCallback (
 };
 
 
-
-
-//---colors---
-// let color1= '#ee82ee';
-
-// let boxOne = document.getElementById("square1");
-// boxOne.style.background = color1
-
-// let boxTwo = document.getElementById("square2");
-// boxTwo.style.background = '#000000'
-
-// let box3 = document.getElementById("square3");
-// box3.style.background = '#989898'
-
-// let boxFour = document.getElementById("square4");
-// boxFour.style.background = '#838996'
-
-// let boxFive = document.getElementById("square5");
-// boxFive.style.background = '#838996'
-
-// let boxSix = document.getElementById("square6");
-// boxSix.style.background = '#838996'
+// --- what happens onload? --- //
 
