@@ -126,14 +126,13 @@ const getPaletteButtonCallback = () => {
 document.getElementById("test").onclick = getPaletteButtonCallback;
 
 //---colors---
-color1= '#ee82ee'
+let color1= '#ee82ee';
 
 let boxOne = document.getElementById("square1");
 boxOne.style.background = color1
 
 let boxTwo = document.getElementById("square2");
 boxTwo.style.background = '#000000'
-
 
 let box3 = document.getElementById("square3");
 box3.style.background = '#989898'
