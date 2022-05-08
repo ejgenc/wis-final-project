@@ -16,12 +16,10 @@
     ],
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "^5.1",
-        "p5": "^1.4"
+        "bootstrap": "^5.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.15",
-        "sass": "1.50"
+        "nodemon": "^2.0.15"
     },
     "nodemonConfig": {
         "verbose": true,

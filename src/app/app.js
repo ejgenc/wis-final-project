@@ -1,104 +1,84 @@
 "use strict";
-// global variables
-let paletteData;
-let nasaImageUrl;
-let europeanaImageUrl;
-const nasaImage = document.getElementById("nasaImage");
-const europeanaImage = document.getElementById("europeanaImage")
-const searchInput = document.getElementById("newdate");
 
+// --- NASA image card ---  //
+// handling date picker logic
+(() => {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1; //January is 0!
+    let yyyy = today.getFullYear();
+    if (dd<10) {
+        dd='0'+dd
+    };
+    if (mm<10) {
+        mm='0'+mm
+    };
 
-// code to restrict datepicker to right dates
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
-if(dd<10){
-    dd='0'+dd
-}
-if(mm<10){
-    mm='0'+mm
-}
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("datePicker").setAttribute("max", today); // set max
+    document.getElementById("datePicker").setAttribute("value", today); // set today
+})();
 
-today = yyyy+'-'+mm+'-'+dd;
-// document.getElementById("newdate").setAttribute("max", today);
-
-
-
-// nasa callback
-async function nasaCallback (
-    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1")
-{
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-    });
-    nasaImageUrl =  await response.json();
-    if (nasaImageUrl[0].media_type == "video") {
-        nasaImageUrl = nasaCallback();
-    }
-    nasaImageUrl = nasaImageUrl[0].url;
-    nasaImage.src = nasaImageUrl;
-}
-
-async function europeanaCallback (
-    url="https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=*&rows=1000&start=1&wskey=orystoplin&colourpalette=%23FFE4C4") {
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-    });
-    europeanaImageUrl = (await response.json())
-    europeanaImageUrl = europeanaImageUrl["items"][5]["edmIsShownBy"];
-    europeanaImage.src = europeanaImageUrl;
+// get nasa image
+const getParameters = {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
 };
 
-// nasa after date picking
-async function nasaDATE (
-    url="https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&count=1")
-{
-    let datum = searchInput;
-    let realurl = "https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP&date=" + datum;
-    const response = await fetch(url, {
-        method: "GET",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-    });
-    nasaImageUrl =  await response.json();
-    if (nasaImageUrl[0].media_type == "video") {
-        nasaImageUrl = nasaCallback();
+async function getNasaImage (date) {
+    let nasaImageUrl;
+    const nasaImage = document.getElementById("nasaImage");
+
+    let baseUrl = "https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP";
+    let addition;
+
+    if (date === "random") {
+        addition =  "&count=1";
+    } else {
+        addition = ("&date=" + date);
     }
-    nasaImageUrl = nasaImageUrl[0].url;
+    let url = baseUrl + addition;
+
+    const response = await fetch(url, getParameters);
+    nasaImageUrl =  await response.json();
+    
+    if (Array.isArray(nasaImageUrl)) {
+        nasaImageUrl = nasaImageUrl[0];
+    }
+
+    if (nasaImageUrl.media_type == "video") {
+        nasaImageUrl = getNasaImage();
+    }
+    nasaImageUrl = nasaImageUrl.url;
     nasaImage.src = nasaImageUrl;
-}
+};
 
+async function randomButtonCallback () {
+    getNasaImage("random");
+};
 
+async function searchButtonCallback () {
+    const searchDate = document.getElementById("datePicker").value; // dynamically get date
+    getNasaImage(searchDate);
+};
 
-// Backend button logic
+// get palette data 
+let paletteData;
+const getPaletteButtonCallback = async () => {
+    await getPalette();
+    await updatePaletteSquares();
+};
 
-// backend callback
-// --- define logic ---
-async function postJson (url="", data={}) {
-    const response = await fetch(url, {
+const getPalette = async () => {
+    const nasaImageUrl = document.getElementById("nasaImage").src;
+    const response = await fetch ("http://127.0.0.1:8000/", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -108,41 +88,38 @@ async function postJson (url="", data={}) {
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify(data) // from JSON to string
+        body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
-    return await response.json();
-};
-
-const getPaletteButtonCallback = () => {
-    postJson("http://127.0.0.1:8000/", {
-        "nasaImageUrl": nasaImageUrl
-    })
-    .then(data => paletteData = data);
+    paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
 };
 
 
+// --- Palette row --- //
+const updatePaletteSquares = async () => {
+    const paletteSquares = document.getElementsByClassName("paletteSquare");
+    for (let i = 0; i < paletteData["raw_palette"].length; i++) {
+        paletteSquares[i].style.backgroundColor = paletteData["raw_palette"][i];
+    }
+};
 
-// --- cast logic ---
-document.getElementById("test").onclick = getPaletteButtonCallback;
+// --- Europeana image card --- //
+async function getEuropeanaImage () {
+    let searchUrl = "https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=painting&rows=1000&start=1&wskey=orystoplin&colourpalette="
+    for (let color of paletteData["europeana_palette"]) {
+        searchUrl += "%23" + color.substring(1, color.length);
+    }
 
-//---colors---
-let color1= '#ee82ee';
+    const response = await fetch(searchUrl, getParameters);
+    let europeanaImageUrl = await response.json()
+    europeanaImageUrl = europeanaImageUrl["items"][Math.round(Math.random(0, 100)*100)]["edmIsShownBy"];
 
-let boxOne = document.getElementById("square1");
-boxOne.style.background = color1
+    const europeanaImage = document.getElementById("europeanaImage");
+    europeanaImage.src = europeanaImageUrl;
+};
 
-let boxTwo = document.getElementById("square2");
-boxTwo.style.background = '#000000'
+async function europeanaButtonCallback () {
+    getEuropeanaImage();
+};
 
-let box3 = document.getElementById("square3");
-box3.style.background = '#989898'
-
-let boxFour = document.getElementById("square4");
-boxFour.style.background = '#838996'
-
-let boxFive = document.getElementById("square5");
-boxFive.style.background = '#838996'
-
-let boxSix = document.getElementById("square6");
-boxSix.style.background = '#838996'
+// --- what happens onload? --- //
 
