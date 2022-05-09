@@ -17,51 +17,82 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-md-5">
-                <div class="card">
-                    <img src="../../media/cat.jpg" id="nasaImage" class="card-img-top" width="100%" height="100%">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <button type="button" class="btn btn-dark" onclick=randomButtonCallback()>
-                                    Randomize
-                                </button>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <input id="datePicker" type="date" class="form-control" min='1995-06-16'>
-                                    <button type="button" class="btn btn-dark" onclick= searchButtonCallback()>
-                                        Search
+    <div class="background-image">
+          <nav class="navbar navbar-expand-lg navbar-dark p-md-3">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="#"></a>
+                  <button
+                          class="navbar-toggler"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#navbarNav"
+                          aria-controls="navbarNav"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <div class="mx-auto"></div>
+                      <ul class="navbar-nav">
+                          <li class="nav-item">
+                              <a class="nav-link text-grey text-underline-hover" href="../../landing.html">Home</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-grey text-underline-hover" href="../app/app.html">App</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-grey text-underline-hover" href="../info/info.html">About Us</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-5">
+                    <div class="card">
+                        <img src="../../media/cat.jpg" id="nasaImage" class="card-img-top" width="100%" height="100%">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-dark" onclick=randomButtonCallback()>
+                                        Randomize
                                     </button>
                                 </div>
+                                <div class="col-6">
+                                    <div class="input-group mb-3">
+                                        <input id="datePicker" type="date" class="form-control" min='1995-06-16'>
+                                        <button type="button" class="btn btn-dark" onclick= searchButtonCallback()>
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary" onclick=getPaletteButtonCallback()>
+                                    Extract color palette
+                                </button>
                             </div>
                         </div>
-                        <div class="row">
-                            <button type="button" class="btn btn-primary" onclick=getPaletteButtonCallback()>
-                                Extract color palette
-                            </button>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <button type="button" class="btn btn-primary" onclick="europeanaButtonCallback()">Search Europeana using this palette</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="paletteSquare"></div>
-                        <div class="paletteSquare"></div>
-                        <div class="paletteSquare"></div>
-                        <div class="paletteSquare"></div>
-                        <div class="paletteSquare"></div>
-                        <div class="paletteSquare"></div>
-                        <button type="button" class="btn btn-primary" onclick="europeanaButtonCallback()">Search Europeana using this palette</button>
+                <div class="col-sm-12 col-md-5">
+                    <div class="card">
+                        <img src="../../media/cat.jpg" id="europeanaImage" class="card-img-top" width="100%" height="100%">
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-5">
-                <div class="card">
-                    <img src="../../media/cat.jpg" id="europeanaImage" class="card-img-top" width="100%" height="100%">
                 </div>
             </div>
         </div>

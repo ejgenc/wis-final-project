@@ -12,3 +12,31 @@
     margin-right: 5px;
     margin-bottom: 5px;
 }
+
+.background-image {
+    background: url(/media/stars.png), linear-gradient(black, black, #08040e, #050307, #130723);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+.text-underline-hover {
+    text-decoration: none;
+}
+
+.text-underline-hover:hover {
+    text-decoration: underline;
+    text-underline-offset: 1em;
+}
+
+.card {
+    background-color: lightgray;
+}
+.p {
+    color: lightgray;
+    Font-Size: 15px;
+}
+body {
+    font-family: 'EB Garamond', serif;
+}

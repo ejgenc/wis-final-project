@@ -6,8 +6,9 @@
 }
 
 .background-image {
-    background: #000000 url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true) repeat top center;
-    background-size: cover;
+    background: url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true), linear-gradient(black,
+    #17022c, #1b142c, #250404, #723000);
+    background-size: 100%;
     height: 100%;
     width: 100%;
 }
