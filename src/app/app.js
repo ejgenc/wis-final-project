@@ -98,9 +98,10 @@ const getPalette = async () => {
 const updatePaletteSquares = async () => {
     const paletteSquares = document.getElementsByClassName("paletteSquare");
     for (let i = 0; i < paletteData["raw_palette"].length; i++) {
-        paletteSquares[i].style.backgroundColor = paletteData["raw_palette"][i];
+        paletteSquares[i].style.background = paletteData["raw_palette"][i];
     }
 };
+
 
 // --- Europeana image card --- //
 async function getEuropeanaImage () {

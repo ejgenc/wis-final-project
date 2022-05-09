@@ -13,9 +13,16 @@
     width: 100%;
 }
 .h1 {
-     font-family: 'Clicker Script', cursive;
-     font-size: 100px;
-     color: lightgray;
+    font-size: 80px;
+    font-family: 'Gentium Basic', serif;
+    margin-top:0;
+    margin-bottom: 10px;
+    text-align: center;
+
+    color:#ffffff;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
  }
 
  .text-underline-hover {
