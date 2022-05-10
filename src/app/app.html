@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="button" class="btn btn-dark fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                <button type="button" disabled id= 'getcolorbutton' class="btn btn-dark fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                         title="Click here to generate a color palette with the colors of this NASA Image!" onclick=getPaletteButtonCallback()>
                                     Extract color palette
                                 </button>
@@ -96,7 +96,7 @@
                             <div class="paletteSquare"></div>
                             <div class="paletteSquare"></div>
                             <div class="paletteSquare"></div>
-                            <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            <button type="button" disabled id= "colorbutton" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="Copy color palette to clipboard" onclick="copyToClipboard()">
                                     Copy palette to clipboard
                             </button>
@@ -106,7 +106,7 @@
                 <div class="col-sm-12 col-md-5">
                     <div class="card">
                         <img src="../../media/placeholder-europeana.png" id="europeanaImage" class="card-img-top">
-                            <button type="button" class="btn btn-dark fw-bold m-4" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            <button type="button" disabled id= "europeanabutton" class="btn btn-dark fw-bold m-4" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="See a random Europeana image with each click!" onclick="europeanaButtonCallback()">Search Europeana using the palette</button>
                     </div>
                 </div>
