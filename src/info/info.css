@@ -49,8 +49,9 @@ html, body {
 }
 .p {
     color: lightgray;
-    Font-Size: 15px;
 }
 body {
     font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    text-align: center;
 }
