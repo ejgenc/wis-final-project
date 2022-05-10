@@ -56,7 +56,6 @@ body {
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
     display:block;
     position: relative;
     z-index: 3;
