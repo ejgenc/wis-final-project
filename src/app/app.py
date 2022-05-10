@@ -44,8 +44,6 @@ nasa_url = str(sys.argv[1])
 try:
     # load the image into memory
     nasa_img = io.imread(nasa_url)
-    # rescale it
-    nasa_img = transform.rescale(nasa_img, 4)
 
     # manipulate the nasa_img object into a numpy array
     nasa_img = np.asarray(nasa_img, dtype="uint8").reshape(-1, 3)
