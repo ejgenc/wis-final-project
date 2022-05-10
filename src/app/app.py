@@ -45,7 +45,7 @@ try:
     # load the image into memory
     nasa_img = io.imread(nasa_url)
     # rescale it
-    nasa_img = transform.rescale(nasa_img, 2)
+    nasa_img = transform.rescale(nasa_img, 1)
 
     # manipulate the nasa_img object into a numpy array
     nasa_img = np.asarray(nasa_img, dtype="uint8").reshape(-1, 3)
@@ -80,7 +80,7 @@ try:
         palette_data[name] = palette
 
     # communicate data to parent process & exit
-    print(palette_data)
+    print(palette_data + "}")
     sys.exit(0)
 except Exception:
     sys.exit(1)
