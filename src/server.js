@@ -117,7 +117,7 @@ const server = http.createServer((request, response) => {
 });
 
 const getColorPalette = async imgUrl => {
-    const python = spawn("python", ["src/app/app.py"]);
+    const python = spawn("python", ["src/app/app.py", imgUrl]);
     let colorPalette = "";
     for await (const chunk of python.stdout) {
         colorPalette += chunk;
@@ -136,6 +136,7 @@ const getColorPalette = async imgUrl => {
             and ran into the following error: ${err}`
         );
     }
+    colorPalette = colorPalette.slice(0, -2);
     return colorPalette;
 };
 

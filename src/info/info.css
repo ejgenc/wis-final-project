@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.background-image {
+    background: url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true), linear-gradient(black,
+    #17022c, #1b142c, #250404, #723000);
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+}
+.h1 {
+    font-size: 80px;
+    font-family: 'Gentium Basic', serif;
+    margin-top:0;
+    margin-bottom: 10px;
+    text-align: center;
+
+    color:#ffffff;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+ }
+
+ .text-underline-hover {
+     text-decoration: none;
+ }
+
+ .text-underline-hover:hover {
+     text-decoration: underline;
+     text-underline-offset: 1em;
+ }
+
+ .container-fluid{
+     z-index: 3;
+     padding-bottom: 25px;
+     /* change text color if needed --- color: deeppink; */
+}
+.card {
+    background-color: lightgray;
+}
+.p {
+    color: lightgray;
+    Font-Size: 15px;
+}
+body {
+    font-family: 'EB Garamond', serif;
+}

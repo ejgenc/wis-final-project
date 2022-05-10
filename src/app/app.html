@@ -8,79 +8,101 @@
     <title>App Interface</title>
 
     <!-- Resources -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
     <!-- JS -->
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js" async defer></script>
-    <script src="app.js" async defer></script> <!-- Application frontend logic -->
+    <script src="app.js" async defer></script>
   </head>
 
-
   <body>
-
-  <!-- row 1 with images and colors -->
-  <div class="row" style="margin-bottom:25px">
-      <div class="col-sm-5">
-        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" alt="nasaimage" width="250">
-      </div>
-      <div class="col-sm-2">
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
-                onclick="searchpicturewiththiscolor"></button>
-        <button id="color button" class="btn btn-dark" type="button"
-                id="colorButton"
-                onclick="searchpicturewiththiscolor"></button>
-      </div>
-      <div class = "col-sm-5">
-        <img src="https://bestpetsvet.com/wp-content/uploads/2019/02/cat-2146089_1280.jpg" class="img" alt="nasaimage" width="250">
-      </div>
-  </div>
-
-  <!-- row 2 with randomize buttons -->
-  <div class="row" style="margin-bottom:10px">
-    <div class="col-sm-2">
-      <button id="rondomize button" class="btn btn-dark" type="button"
-            id="searchButton"
-            onclick="Rondomize">Rondomize</button>
+    <div class="background-image">
+        <nav class="navbar navbar-expand-lg navbar-dark p-md-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mx-auto"></div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-grey text-underline-hover" href="../../landing.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-grey text-underline-hover" href="../app/app.html">App</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-grey text-underline-hover" href="../info/info.html">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="title">
+            <h1>Stars Falling to Earth</h1>
+        </div>
+        <div class="font-weight-light">
+            <div class="row">
+                <div class="col-sm-12 col-md-5">
+                    <div class="card">
+                        <img src="../../media/cat.jpg" id="nasaImage" class="card-img-top">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-dark" onclick=randomButtonCallback()>
+                                        Randomize
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-group mb-3">
+                                        <input id="datePicker" type="date" class="form-control" min='1995-06-16'>
+                                        <button type="button" class="btn btn-dark" onclick= searchButtonCallback()>
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary fw-bold" onclick=getPaletteButtonCallback()>
+                                    Extract color palette
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <div class="paletteSquare"></div>
+                            <p>Your NASA Color Palette</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-5">
+                    <div class="card">
+                        <img src="../../media/cat.jpg" id="europeanaImage" class="card-img-top">
+                            <button type="button" class="btn btn-primary fw-bold m-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="See a random Europeana image with each click!" onclick="europeanaButtonCallback()">Search Europeana using this palette</button>
+                    </div>
+                </div>
+                <div class="col-lg text-center text-white-50 m-3">
+                    <p> The Starry Night - 2022</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-3">
-      <input type = "date" name = "date">
-  </div>
-    <div class="col-sm-2"></div>
-    <div class = "col-sm-5">
-      <button id="rondomize button" class="btn btn-dark" type="button"
-              id="searchButton"
-              onclick="Rondomize">Rondomize</button>
-    </div>
-  </div>
-
-  <!-- row 3 with download-->
-  <div class="row">
-    <div class="col-sm-5" style="margin-bottom:10px">
-      <button id="download button" class="btn btn-dark" type="button"
-             id="downloadButton"
-             onclick="Downloadpicture">Download</button>
-    </div>
-    <div class="col-sm-2"></div>
-    <div class = "col-sm-5">
-      <button id="download button" class="btn btn-dark" type="button"
-              id="downloadButton"
-              onclick="Downloadpicture">Download</button>
-    </div>
-  </div>
-
-
-  <h2>Dummy Links</h2>
-    <a href="../../landing.html">Landing Page</a>
-    <a href="../info/info.html">App Page</a>
-   <img scr=" " id="nasapicture">
-    <button type="button" class="btn btn-primary" onclick="nasaCallback()">Talk with NASA</button>
-    <button type="button" class="btn btn-primary" id="test">Talk with the backend</button>
-  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>
