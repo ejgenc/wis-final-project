@@ -5,6 +5,11 @@
     text-decoration: none;
 }
 
+html, body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 .text-underline-hover {
     text-decoration: none;
 }
@@ -18,17 +23,16 @@ body {
     font-family: 'EB Garamond', serif;
 }
 
-.container *{
-    z-index: 3;
+.wrapper *{
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
 }
 
 .title h1{
     font-size: 86px;
     font-family: 'Gentium Basic', serif;
     margin-top:4em;
-    margin-left: auto;
-    margin-right:auto;
-    text-align: center;
 
     color:#ffffff;
     background: -webkit-linear-gradient(#eee, #333);
@@ -40,17 +44,13 @@ body {
     z-index: 3;
 }
 
-.button {
+.btn {
     font-size: 30px;
     font-family: 'Gentium Basic', serif;
     margin-top:1em;
-    margin-left: auto;
-    margin-right:auto;
-    text-align: center;
     cursor: pointer;
     border-radius: 10px;
-    border-width: 3px;
-    text-decoration: none;
+    border-width: 1px;
 
     color:#ffffff;
     background: -webkit-linear-gradient(#eee, #333);
@@ -63,9 +63,7 @@ body {
 
 }
 
-.col-lg {
-    z-index: 3;
-}
+
 
 @keyframes create-twinkle {
     from {background-position:0 0;}

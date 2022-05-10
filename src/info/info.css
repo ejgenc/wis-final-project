@@ -5,6 +5,11 @@
     text-decoration: none;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .background-image {
     background: url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true), linear-gradient(black,
     #17022c, #1b142c, #250404, #723000);

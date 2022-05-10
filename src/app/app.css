@@ -1,3 +1,9 @@
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .paletteSquare {
     /* these styles will let the divs line up next to each other
        while accepting dimensions */
@@ -7,9 +13,6 @@
     width: 80px;
     height: 80px;
     border: 1px solid black;
-
-
-
 
 }
 
@@ -31,7 +34,7 @@
 }
 
 .title h1{
-    font-size: 60px;
+    font-size: 70px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
     margin-bottom: 1em;
@@ -44,7 +47,24 @@
 
 }
 
+.title p{
+    font-size: 20px;
+    font-family: 'Gentium Basic', serif;
+    margin-top:0em;
+    margin-bottom: 2em;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
 
+    color: #c4c0c0;
+}
+.flex-sm-column {
+    font-size: 18px;
+    text-align: center;
+    text-emphasis: black;
+    background-color: #333333;
+    opacity: .8;
+}
 .card {
     background-color: lightgray;
     padding-bottom: 10px;
@@ -63,14 +83,6 @@ body {
     font-family: 'EB Garamond', serif;
 }
 
-.btn-primary {
-    color: black;
-    background: -webkit-linear-gradient(#eee, #333);
-    cursor: pointer;
-
-    display:block;
-    position: relative;
-}
 
 .container-fluid{
     padding-bottom: 25px;

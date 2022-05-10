@@ -49,6 +49,11 @@
         </nav>
         <div class="title">
             <h1>Stars Falling to Earth</h1>
+            <p> On the left-hand side, you'll see the NASA image of the day. Do you like it? Generate a color palette based on the
+                colors shown in the image by clicking the "Extract color palette button". If you want to see more than just today's NASA image, you're in luck!
+                Just hit the randomize button or choose a date to pick an image from a specific date in time.If you are interested in seeing a corresponding Europeana image using the same
+                colors that are found in our galaxy, click on the button under the image on the right to generate a matching image from the Europeana database!
+            </p>
         </div>
         <div class="font-weight-light">
             <div class="row">
@@ -58,21 +63,24 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-dark" onclick=randomButtonCallback()>
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                            title="Get a new random NASA image from past dates" onclick=randomButtonCallback()>
                                         Randomize
                                     </button>
                                 </div>
                                 <div class="col-6">
                                     <div class="input-group mb-3">
                                         <input id="datePicker" type="date" class="form-control" min='1995-06-16'>
-                                        <button type="button" class="btn btn-dark" onclick= searchButtonCallback()>
+                                        <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                title="Get a NASA image from a specific date" onclick= searchButtonCallback()>
                                             Search
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="button" class="btn btn-primary fw-bold" onclick=getPaletteButtonCallback()>
+                                <button type="button" class="btn btn-dark fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                        title="Click here to generate a color palette with the colors of this NASA Image!" onclick=getPaletteButtonCallback()>
                                     Extract color palette
                                 </button>
                             </div>
@@ -88,14 +96,18 @@
                             <div class="paletteSquare"></div>
                             <div class="paletteSquare"></div>
                             <div class="paletteSquare"></div>
-                            <p>Your NASA Color Palette</p>
+                            <button type="button" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Copy color palette to clipboard" onclick="copyToClipboard()">
+                                    Copy palette to clipboard
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-5">
                     <div class="card">
                         <img src="../../media/cat.jpg" id="europeanaImage" class="card-img-top">
-                            <button type="button" class="btn btn-primary fw-bold m-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="See a random Europeana image with each click!" onclick="europeanaButtonCallback()">Search Europeana using this palette</button>
+                            <button type="button" class="btn btn-dark fw-bold m-4" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="See a random Europeana image with each click!" onclick="europeanaButtonCallback()">Search Europeana using the palette</button>
                     </div>
                 </div>
                 <div class="col-lg text-center text-white-50 m-3">
