@@ -90,7 +90,8 @@ const getPalette = async () => {
         referrerPolicy: "no-referrer",
         body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
-    paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
+    // paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
+    paletteData = JSON.parse(await response.json())
 };
 
 
