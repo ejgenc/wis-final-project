@@ -110,6 +110,19 @@ const updatePaletteSquares = async (palette) => {
 };
 
 
+// --- copy to clipboard --- //
+
+async function copyToClipboard() {
+    const content = paletteData;
+    navigator.clipboard.writeText(content)
+        .then(() => {
+            console.log("Text copied to clipboard...")
+        })
+        .catch(err => {
+            console.log('Something went wrong', err);
+        })
+}
+
 // --- Europeana image card --- //
 async function getEuropeanaImage () {
     let searchUrl = "https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=painting&rows=1000&start=1&wskey=orystoplin&colourpalette="
