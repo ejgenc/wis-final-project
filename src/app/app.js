@@ -34,6 +34,8 @@ const getParameters = {
 
 async function getNasaImage (date) {
     let nasaImageUrl;
+    const button = document.getElementById('getcolorbutton') //this will help enable the next button
+    button.disabled = false;
     const nasaImage = document.getElementById("nasaImage");
 
     let baseUrl = "https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP";
@@ -72,6 +74,10 @@ async function searchButtonCallback () {
 // get palette data 
 let paletteData;
 const getPaletteButtonCallback = async () => {
+    const buttoncolor = document.getElementById('colorbutton') //this will help enable the next button
+    buttoncolor.disabled = false;
+    const button = document.getElementById('europeanabutton') //this will help enable the next button
+    button.disabled = false;
     await getPalette();
     await updatePaletteSquares();
 };
@@ -90,7 +96,8 @@ const getPalette = async () => {
         referrerPolicy: "no-referrer",
         body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
-    paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
+    // paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
+    paletteData = JSON.parse(await response.json())
 };
 
 
