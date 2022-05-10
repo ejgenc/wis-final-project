@@ -78,7 +78,7 @@ try:
         palette_data[name] = palette
 
     # communicate data to parent process & exit
-    print(str(palette_data) + "}")
+    print(str(palette_data))
     sys.exit(0)
 except Exception:
     sys.exit(1)

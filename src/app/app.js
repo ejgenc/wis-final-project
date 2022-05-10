@@ -73,12 +73,12 @@ async function searchButtonCallback () {
 let paletteData;
 const getPaletteButtonCallback = async () => {
     await getPalette();
-    await updatePaletteSquares();
+    await updatePaletteSquares(paletteData["raw_palette"]);
 };
 
 const getPalette = async () => {
     const nasaImageUrl = document.getElementById("nasaImage").src;
-    const response = await fetch ("https://wis-final-project.herokuapp.com/", {
+    const response = await fetch ("http://127.0.0.1:8000/", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -90,16 +90,16 @@ const getPalette = async () => {
         referrerPolicy: "no-referrer",
         body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
-    // paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
-    paletteData = JSON.parse(await response.json())
+    paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
+    // paletteData = JSON.parse(await response.json())
 };
 
 
 // --- Palette row --- //
-const updatePaletteSquares = async () => {
+const updatePaletteSquares = async (palette) => {
     const paletteSquares = document.getElementsByClassName("paletteSquare");
-    for (let i = 0; i < paletteData["raw_palette"].length; i++) {
-        paletteSquares[i].style.background = paletteData["raw_palette"][i];
+    for (let i = 0; i < palette.length; i++) {
+        paletteSquares[i].style.background = palette[i];
     }
 };
 
@@ -124,4 +124,5 @@ async function europeanaButtonCallback () {
 };
 
 // --- what happens onload? --- //
+updatePaletteSquares(["#444140", "#27262b", "#aea68e", "#777aa9", "#535568", "#6f6247"])
 
