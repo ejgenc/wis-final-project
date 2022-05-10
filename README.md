@@ -4,7 +4,7 @@
 
 ## What is this repository about?
 
-WIP
+Lorem Ipsum Dolor Sit Amet
 
 ## Repository structure
 
