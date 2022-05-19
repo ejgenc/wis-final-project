@@ -33,9 +33,8 @@ const getParameters = {
 };
 
 async function getNasaImage (date) {
-    let nasaImageUrl;
-    const button = document.getElementById('getcolorbutton') //this will help enable the next button
-    button.disabled = false;
+    let nasaImageMetadata;
+    document.getElementById('getPaletteButton').disabled = false ;//this will help enable the next button
     const nasaImage = document.getElementById("nasaImage");
 
     let baseUrl = "https://api.nasa.gov/planetary/apod?api_key=noKEd19KRPwQHM1gyHcNkpMviSw2xmzlOfH1TXvP";
@@ -49,17 +48,17 @@ async function getNasaImage (date) {
     let url = baseUrl + addition;
 
     const response = await fetch(url, getParameters);
-    nasaImageUrl =  await response.json();
+    nasaImageMetadata =  await response.json();
     
-    if (Array.isArray(nasaImageUrl)) {
-        nasaImageUrl = nasaImageUrl[0];
+    if (Array.isArray(nasaImageMetadata)) {
+        nasaImageMetadata = nasaImageMetadata[0];
     }
 
-    if (nasaImageUrl.media_type == "video") {
-        nasaImageUrl = getNasaImage();
+    if (nasaImageMetadata.media_type == "video") {
+        nasaImageMetadata = getNasaImage();
     }
-    nasaImageUrl = nasaImageUrl.url;
-    nasaImage.src = nasaImageUrl;
+    nasaImage.src = nasaImageMetadata.url;
+    document.getElementById("datePicker").value = nasaImageMetadata.date;
 };
 
 async function randomButtonCallback () {
@@ -71,13 +70,10 @@ async function searchButtonCallback () {
     getNasaImage(searchDate);
 };
 
-// get palette data 
+// get palette data
 let paletteData;
 const getPaletteButtonCallback = async () => {
-    const buttoncolor = document.getElementById('colorbutton') //this will help enable the next button
-    buttoncolor.disabled = false;
-    const button = document.getElementById('europeanabutton') //this will help enable the next button
-    button.disabled = false;
+    const button = document.getElementById('europeanaButton').disabled = false; //this will help enable the next button
     await getPalette();
     await updatePaletteSquares(paletteData["raw_palette"]);
 };
@@ -97,7 +93,6 @@ const getPalette = async () => {
         body: JSON.stringify({"nasaImageUrl": nasaImageUrl})
     });
     paletteData = JSON.parse((await response.json()).replaceAll("\'", "\""));
-    // paletteData = JSON.parse(await response.json())
 };
 
 
@@ -114,10 +109,15 @@ const updatePaletteSquares = async (palette) => {
 
 
 // --- copy to clipboard --- //
-
-
 async function copyToClipboard() {
-    const content = [].slice.call(document.getElementsByClassName("paletteSquare"));
+    let content;
+    if (!paletteData) {
+        content = initialPalette;
+        console.log(content);
+    } else {
+        content = paletteData["raw_palette"];
+        console.log(content);
+    }
     navigator.clipboard.writeText(content)
         .then(() => {
             console.log("Text copied to clipboard...")
@@ -147,5 +147,6 @@ async function europeanaButtonCallback () {
 };
 
 // --- what happens onload? --- //
-updatePaletteSquares(["#444140", "#27262b", "#aea68e", "#777aa9", "#535568", "#6f6247"])
+const initialPalette = ["#444140", "#27262b", "#aea68e", "#777aa9", "#535568", "#6f6247"];
+updatePaletteSquares(initialPalette);
 
