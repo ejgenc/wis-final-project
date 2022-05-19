@@ -81,12 +81,12 @@ body {
 }
 
 .stars {
-    background:#000 url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/stars.png?raw=true) repeat top center;
+    background:#000 url(https://github.com/ejgenc/wis-final-project/blob/main/media/stars.png?raw=true) repeat top center;
     z-index:0;
 }
 
 .twinkling{
-    background: transparent url(https://github.com/Carla-Codes/starry-night-css-animation/blob/master/twinkling.png?raw=true) repeat top center;
+    background: transparent url(https://github.com/ejgenc/wis-final-project/blob/main/media/twinkling.png?raw=true) repeat top center;
     z-index:1;
     animation:create-twinkle 200s linear infinite;
 }

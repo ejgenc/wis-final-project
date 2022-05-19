@@ -107,13 +107,17 @@ const updatePaletteSquares = async (palette) => {
     for (let i = 0; i < palette.length; i++) {
         paletteSquares[i].style.background = palette[i];
     }
+    for (let i = 0; i < palette.length; i++) {
+        paletteSquares[i].title = palette[i];
+    }
 };
 
 
 // --- copy to clipboard --- //
 
+
 async function copyToClipboard() {
-    const content = paletteData;
+    const content = [].slice.call(document.getElementsByClassName("paletteSquare"));
     navigator.clipboard.writeText(content)
         .then(() => {
             console.log("Text copied to clipboard...")
