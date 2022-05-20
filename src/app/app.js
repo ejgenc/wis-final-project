@@ -80,7 +80,7 @@ const getPaletteButtonCallback = async () => {
 
 const getPalette = async () => {
     const nasaImageUrl = document.getElementById("nasaImage").src;
-    const response = await fetch ("http://127.0.0.1:8000/", {
+    const response = await fetch ("https://wis-final-project.herokuapp.com/", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
