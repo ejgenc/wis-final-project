@@ -54,8 +54,8 @@ async function getNasaImage (date) {
         nasaImageMetadata = nasaImageMetadata[0];
     }
 
-    if (nasaImageMetadata.media_type == "video") {
-        nasaImageMetadata = getNasaImage();
+    if (nasaImageMetadata.media_type !== "image") {
+        nasaImageMetadata = getNasaImage("random");
     }
     nasaImage.src = nasaImageMetadata.url;
     document.getElementById("datePicker").value = nasaImageMetadata.date;
@@ -96,13 +96,10 @@ const getPalette = async () => {
 };
 
 
-// --- Palette row --- //
 const updatePaletteSquares = async (palette) => {
     const paletteSquares = document.getElementsByClassName("paletteSquare");
     for (let i = 0; i < palette.length; i++) {
         paletteSquares[i].style.background = palette[i];
-    }
-    for (let i = 0; i < palette.length; i++) {
         paletteSquares[i].title = palette[i];
     }
 };
@@ -113,10 +110,8 @@ async function copyToClipboard() {
     let content;
     if (!paletteData) {
         content = initialPalette;
-        console.log(content);
     } else {
         content = paletteData["raw_palette"];
-        console.log(content);
     }
     navigator.clipboard.writeText(content)
         .then(() => {
@@ -128,11 +123,14 @@ async function copyToClipboard() {
 }
 
 // --- Europeana image card --- //
-async function getEuropeanaImage () {
-    let searchUrl = "https://api.europeana.eu/record/v2/search.json?&media=true&profile=standard&query=painting&rows=1000&start=1&wskey=orystoplin&colourpalette="
-    for (let color of paletteData["europeana_palette"]) {
-        searchUrl += "%23" + color.substring(1, color.length);
+window.onclick = e => {
+    if (e.target.className === "paletteSquare") {
+        getEuropeanaImage(e.target.title);
     }
+} 
+async function getEuropeanaImage (color) {
+    let searchUrl = 'https://api.europeana.eu/record/v2/search.json?media=true&profile=rich&query=painting&qf=DATA_PROVIDER%3A"Rijksmuseum"&rows=100&start=1&sort=random+asc&theme=art&wskey=orystoplin'
+    searchUrl += "&colourpalette=%23" + color;
 
     const response = await fetch(searchUrl, getParameters);
     let europeanaImageUrl = await response.json()
