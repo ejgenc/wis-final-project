@@ -83,6 +83,9 @@ body {
     font-family: 'EB Garamond', serif;
 }
 
+.paletteSquare {
+    cursor: pointer;
+}
 
 .container-fluid{
     padding-bottom: 25px;
