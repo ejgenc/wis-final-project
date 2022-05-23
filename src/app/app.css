@@ -61,12 +61,12 @@ html, body {
 }
 
 .title p{
-    font-size: 22px;
+    font-size: 23px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
     margin-bottom: 2em;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 100px;
+    margin-right: 100px
     text-align: center;
 
     color: #c4c0c0;
@@ -87,9 +87,5 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.p {
-    color: lightgray;
-    Font-Size: 15px;
 }
 
