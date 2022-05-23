@@ -13,8 +13,19 @@ html, body {
     width: 80px;
     height: 80px;
     border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px #212529;
 
 }
+
+.paletteSquare:hover {
+    box-shadow: 0px 4px 10px #212529;
+}
+
+.paletteSquare:active {
+    box-shadow: 0px 1px 10px #212529;
+}
+
 
 .background-image {
     background: url(/media/stars.png), linear-gradient(black, black, #08040e, #050307, #130723);
@@ -37,7 +48,7 @@ html, body {
     font-size: 70px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     text-align: center;
 
     color:#ffffff;
@@ -48,7 +59,7 @@ html, body {
 }
 
 .title p{
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
     margin-bottom: 2em;
@@ -79,11 +90,8 @@ html, body {
     color: lightgray;
     Font-Size: 15px;
 }
-body {
-    font-family: 'EB Garamond', serif;
-}
 
 
-.container-fluid{
-    padding-bottom: 25px;
+.paletteSquare {
+    cursor: pointer;
 }

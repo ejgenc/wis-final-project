@@ -73,14 +73,14 @@ async function searchButtonCallback () {
 // get palette data
 let paletteData;
 const getPaletteButtonCallback = async () => {
-    const button = document.getElementById('europeanaButton').disabled = false; //this will help enable the next button
     await getPalette();
     await updatePaletteSquares(paletteData["raw_palette"]);
 };
 
 const getPalette = async () => {
     const nasaImageUrl = document.getElementById("nasaImage").src;
-    const response = await fetch ("https://wis-final-project.herokuapp.com/", {
+    // const response = await fetch ("https://wis-final-project.herokuapp.com/", {
+    const response = await fetch("http://127.0.0.1:8000/", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -147,4 +147,3 @@ async function europeanaButtonCallback () {
 // --- what happens onload? --- //
 const initialPalette = ["#444140", "#27262b", "#aea68e", "#777aa9", "#535568", "#6f6247"];
 updatePaletteSquares(initialPalette);
-
