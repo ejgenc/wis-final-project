@@ -28,7 +28,7 @@ html, body {
 
 
 .background-image {
-    background: url(/media/stars.png), linear-gradient(black, black, #08040e, #050307, #130723);
+    background: url(media/stars.png), linear-gradient(black, black, #08040e, #050307, #130723);
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -46,7 +46,7 @@ html, body {
 
 .title h1{
     font-size: 70px;
-    font-family: 'Gentium Basic', serif;
+    font-family: 'Clicker Script', cursive;
     margin-top:0em;
     margin-bottom: .5em;
     text-align: center;
