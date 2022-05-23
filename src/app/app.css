@@ -37,7 +37,7 @@ html, body {
     font-size: 70px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     text-align: center;
 
     color:#ffffff;
@@ -48,7 +48,7 @@ html, body {
 }
 
 .title p{
-    font-size: 20px;
+    font-size: 22px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
     margin-bottom: 2em;
@@ -79,11 +79,11 @@ html, body {
     color: lightgray;
     Font-Size: 15px;
 }
-body {
-    font-family: 'EB Garamond', serif;
-}
 
+
+.paletteSquare {
+    cursor: pointer;
+}
 
 .container-fluid{
     padding-bottom: 25px;
-}

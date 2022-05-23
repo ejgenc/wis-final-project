@@ -30,6 +30,14 @@ html, body {
     -webkit-text-fill-color: transparent;
  }
 
+.wrapper {
+    font-size: 23px;
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+
  .text-underline-hover {
      text-decoration: none;
  }
@@ -46,6 +54,14 @@ html, body {
 }
 .card {
     background-color: lightgray;
+    max-height: 300px;
+    font-size: 23px;
+    margin-bottom: 30px;
+}
+
+.img-fluid {
+    max-width: 299px;
+    max-height: 299px;
 }
 .p {
     color: lightgray;
