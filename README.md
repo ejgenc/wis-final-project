@@ -8,7 +8,7 @@
 
 ## Tech specs
 
-This web application is powered by a very simple Node.js web server. The web server is responsible for serving the HTML pages and other related assets as well as handling POST requests. Once a POST request with certain parameters is made to the web server, a Python child process is spawned. This Python child process runs an unsupervised learning algorithm known as [**Mini Batch K-Means Clustering**]() to extract the six most dominant colors of the selected image. The relevant information is then passed backed to the main Node.js process.
+This web application is powered by a very simple Node.js web server. The web server is responsible for serving the HTML pages and other related assets as well as handling POST requests. Once a POST request with certain parameters is made to the web server, a Python child process is spawned. This Python child process runs an unsupervised learning algorithm known as [**Mini Batch K-Means Clustering**](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html) to extract the six most dominant colors of the selected image. The relevant information is then passed backed to the main Node.js process.
 
 For the front end mainly Bootstrap 5 components were used in order to give the website an unified look.
 
