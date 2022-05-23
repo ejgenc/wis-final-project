@@ -2,6 +2,7 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'EB Garamond', serif;
 }
 
 .paletteSquare {
@@ -9,6 +10,7 @@ html, body {
        while accepting dimensions */
     display: inline-block;
     float: none;
+    cursor: pointer;
 
     width: 80px;
     height: 80px;
@@ -91,7 +93,3 @@ html, body {
     Font-Size: 15px;
 }
 
-
-.paletteSquare {
-    cursor: pointer;
-}

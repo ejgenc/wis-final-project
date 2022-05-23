@@ -60,7 +60,7 @@ html, body {
 }
 
 .img-fluid {
-    max-width: 299px;
+    max-width: 250px;
     max-height: 299px;
 }
 .p {
