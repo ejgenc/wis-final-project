@@ -2,9 +2,15 @@
 
 > This repository and the code it contains was prepared by Amy-Caroline Downing, Anica Rimac, Eline de Witte and Eren Janberk Genç as part of the requirements for completing the "Web Information Systems" class, offered by the MSc Digital Humanities programme in KU Leuven.
 
-## What is this repository about?
+## What is this project about?
+
+"*The Starry Night*" is a proof-of-concept web application that allows the user to make a connection in between the beauty of the stars and the beauty of human ingenuity through the intermediation of colors. The user can use the responsive UI presented to search for an astronomy picture using [NASA's Astronomy Picture of the Day](https://apod.nasa.gov/apod/astropix.html) API. After finding a picture that piques her interest, the user can use the web interface to extract the six most dominant colors (the *color palette* of the picture). These colors can then be used to search for paintings using [Europeana's Search API](https://pro.europeana.eu/page/search). Alternatively, the user can also extract the hexcodes of the palette in order to creatively reuse it.
 
 ## Tech specs
+
+This web application is powered by a very simple Node.js web server. The web server is responsible for serving the HTML pages and other related assets as well as handling POST requests. Once a POST request with certain parameters is made to the web server, a Python child process is spawned. This Python child process runs an unsupervised learning algorithm known as [**Mini Batch K-Means Clustering**]() to extract the six most dominant colors of the selected image. The relevant information is then passed backed to the main Node.js process.
+
+For the front end mainly Bootstrap 5 components were used in order to give the website an unified look.
 
 ## How to install and run this project locally
 
@@ -44,5 +50,3 @@ After installing both Node.js dependencies and Python dependencies, you can foll
 2. Navigate to the folder in which the project source code can be found.
 3. Run `npm run dev` to run the web application via an NPM script
 4. Open up any browser of your choice and access the following URL: `http://127.0.0.1:8000`
-
-## Repository structure
