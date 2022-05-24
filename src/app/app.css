@@ -2,6 +2,7 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'EB Garamond', serif;
 }
 
 .paletteSquare {
@@ -9,6 +10,7 @@ html, body {
        while accepting dimensions */
     display: inline-block;
     float: none;
+    cursor: pointer;
 
     width: 80px;
     height: 80px;
@@ -59,12 +61,12 @@ html, body {
 }
 
 .title p{
-    font-size: 22px;
+    font-size: 23px;
     font-family: 'Gentium Basic', serif;
     margin-top:0em;
     margin-bottom: 2em;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 100px;
+    margin-right: 100px
     text-align: center;
 
     color: #c4c0c0;
@@ -86,12 +88,4 @@ html, body {
     height: 100%;
     object-fit: cover;
 }
-.p {
-    color: lightgray;
-    Font-Size: 15px;
-}
 
-
-.paletteSquare {
-    cursor: pointer;
-}
