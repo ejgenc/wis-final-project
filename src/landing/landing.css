@@ -44,16 +44,13 @@ body {
     z-index: 3;
 }
 
-.title p{
-    font-size: 25px;
+.intro{
+    font-size: 22px;
     font-family: 'Gentium Basic', serif;
-    margin-top: 1em;
-    margin-bottom: 2em;
-    margin-right: 21em;
-    margin-left: 21em;
+    margin-top:1em;
 
     color:#ffffff;
-    background: -webkit-linear-gradient(#eee, #797979);
+    background: -webkit-linear-gradient(#eee, #949393);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -61,10 +58,13 @@ body {
     position: relative;
     z-index: 3;
 }
+
 .btn {
     font-size: 30px;
     font-family: 'Gentium Basic', serif;
-    margin-top:1em;
+    text-align: center;
+
+    margin-top:2em;
     cursor: pointer;
     border-radius: 10px;
     border-width: 1px;
